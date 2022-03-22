@@ -1,9 +1,7 @@
-
-
 const moment = require("moment");
 
 function getPrevDate(time = moment()) {
-  const prevTime = moment(time.format()).month(time.month() - 1);
+  const prevTime = moment(time).add(-1, "month");
   
   // 获取当月第一天是周几
   const curWeekday = time.startOf("month").weekday();
@@ -20,7 +18,7 @@ function getPrevDate(time = moment()) {
 }
 
 function getNextDate(prevDays, time = moment()) {
-  const nextTime = moment(time.format()).month(time.month() + 1);
+  const nextTime = moment(time).add(1, "month");
   const nextDays = 42 - time.endOf("month").date() - prevDays;
   return {
     days: nextDays,
