@@ -8,6 +8,8 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     const params = req.body || {};
+    const user = await userSev.getUser(params);
+    if (user) return "该名称已被注册"
     const result = await userSev.addUser(params);
     return result;
   })

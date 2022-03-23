@@ -43,7 +43,6 @@ exports.editTodo = async function (id, todoData) {
 
 // 获取当前月份下每天todo的信息
 exports.getMonthTodo = async function ({ userId, time }) {
-  console.log(userId, time);
   const { year, month } = getDateInfo(time);
   userId = moogoose.Types.ObjectId(userId);
   const baseFilter = {
